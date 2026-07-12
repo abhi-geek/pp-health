@@ -52,8 +52,8 @@
 }
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:var(--font-body);color:var(--green-900);background:var(--cream-100);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--font-body);color:var(--green-900);background:var(--cream-100);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{display:block;max-width:100%}
 a{color:inherit}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
@@ -211,6 +211,32 @@ footer{background:var(--green-900);color:var(--green-100)}
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease}
 .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.disc{transform:rotate(-10deg)!important}}
+
+/* ---------- Mobile tuning ---------- */
+@media(max-width:640px){
+  section{padding:54px 0}
+  .section-head h2{margin-top:.25em}
+  .lede,.hero-sub{font-size:1.08rem}
+  .hero-top{margin-bottom:26px}
+  .hero-tag{display:none}
+  .hero-cta{gap:12px}
+  .hero-cta .btn{flex:1 1 100%;justify-content:center}
+  .founder-note p{font-size:1.06rem}
+  .founder-note .big{margin-bottom:20px}
+  .cta{padding:46px 22px;border-radius:20px}
+  .cta p{font-size:1.08rem}
+  .steps{grid-template-columns:1fr 1fr;gap:14px}
+  .step{padding:18px}
+  .step .si{width:40px;height:40px;margin-bottom:12px}
+  .foot-inner{justify-content:center;text-align:center;gap:14px}
+}
+@media(max-width:420px){
+  .wrap{padding:0 18px}
+  .hero-brand .word{height:22px}
+  .steps{grid-template-columns:1fr}
+  .disc{width:96px;height:96px}
+  .disc .num{font-size:2.2rem}
+}
 </style>
 </head>
 <body>
@@ -332,7 +358,7 @@ footer{background:var(--green-900);color:var(--green-100)}
   <div class="wrap">
     <div class="section-head" style="max-width:44ch">
       <span class="eyebrow"><span class="star">✳</span> How it'll work</span>
-      <h2>Dinner sorted, on your terms</h2>
+      <h2>Lunch sorted, on your terms</h2>
     </div>
     <div class="steps">
       <div class="step"><div class="si"><svg class="ico"><use href="#i-salad"/></svg></div><div class="n">01</div><h3>Pick your plan</h3><p>Weekly or monthly. Veg, non-veg, or a mix — you choose.</p></div>
