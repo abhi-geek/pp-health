@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Protein Please — So good you'll forget it's healthy</title>
+<meta name="description" content="High-protein meals — veg & non-veg — crafted so the food is the point and the nutrition is the bonus. Our first tryout batches are being cooked in Thane. Grab early access.">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Protein Please — So good you'll forget it's healthy">
+<meta property="og:description" content="High-protein meals, veg & non-veg, made so the food is the point. First tryout batches cooking in Thane. Come get early access.">
+<meta property="og:image" content="assets/og-image.jpg">
+<meta property="og:url" content="https://proteinplease.in">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   Protein Please — landing page
+   Tokens, type and voice from the brand book.
+   >>> To wire the Google Form: set GOOGLE_FORM_URL in the
+   <script> at the bottom of this file. That's the only spot. <<<
+   ============================================================ */
+
+@font-face{
+  font-family:'Impact PP';
+  src:url('assets/impact.woff2') format('woff2');
+  font-weight:400;font-display:swap;
+}
+
+:root{
+  --green-900:#13200E; --green-800:#1D2F17; --green-700:#284121;
+  --green-600:#36562C; --green-500:#4A7039; --green-100:#DCE5D4;
+  --pink-500:#DCA7C4; --pink-400:#E8BBD3; --pink-300:#EFCFDF;
+  --pink-200:#F5E0EB; --pink-100:#FBF0F5;
+  --cream-50:#FBF8EF; --cream-100:#F6F2E6; --cream-200:#EDE7D4;
+  --cream-300:#E2DAC2; --stone-400:#B7B09B; --stone-600:#6E6A58;
+  --leaf:#3E8E4E; --tomato:#D6462F; --yolk:#E8B23A;
+
+  --font-display:'Impact PP','Arial Narrow',sans-serif;
+  --font-body:'Hanken Grotesk',system-ui,-apple-system,sans-serif;
+  --font-mono:'Space Mono','SFMono-Regular',ui-monospace,monospace;
+
+  --maxw:1120px;
+  --radius-lg:22px; --radius-md:14px;
+  --shadow-card:0 1px 2px rgba(19,32,14,.04), 0 8px 24px rgba(19,32,14,.06);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font-body);color:var(--green-900);background:var(--cream-100);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+/* icons (Lucide) */
+.ico{width:1.25em;height:1.25em;display:inline-block;vertical-align:-.18em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+.eyebrow{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;font-weight:700;color:var(--stone-600)}
+.star{color:var(--pink-500)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.5em;font-family:var(--font-body);font-weight:700;font-size:1rem;padding:.85em 1.6em;border-radius:999px;border:2px solid transparent;cursor:pointer;text-decoration:none;transition:transform .12s ease, background .2s ease, border-color .2s ease;white-space:nowrap}
+.btn:active{transform:translateY(1px)}
+.btn .ico{width:1.05em;height:1.05em;stroke-width:2.4}
+.btn-pink{background:var(--pink-300);color:var(--green-900)}
+.btn-pink:hover{background:var(--pink-400)}
+.btn-green{background:var(--green-800);color:var(--cream-50)}
+.btn-green:hover{background:var(--green-700)}
+.btn-ghost{background:transparent;color:var(--green-800);border-color:var(--cream-300)}
+.btn-ghost:hover{border-color:var(--green-500)}
+.btn-ghost-inv{background:transparent;color:var(--cream-50);border-color:rgba(246,242,230,.32)}
+.btn-ghost-inv:hover{border-color:var(--pink-300)}
+.btn-lg{padding:1.05em 2em;font-size:1.0625rem}
+
+/* ---------- HERO (green) ---------- */
+.hero{background:var(--green-800);color:var(--cream-50);padding-top:26px;overflow:hidden}
+.hero-top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:40px}
+.hero-brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.hero-brand .mark{height:38px;width:38px}
+.hero-brand .word{height:24px;width:auto}
+.hero-tag{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--pink-300);border:1px solid var(--green-600);padding:5px 11px;border-radius:999px;white-space:nowrap}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center;padding-bottom:64px}
+.hero-grid>*{min-width:0}
+.hero-body{position:relative}
+.hero .eyebrow{color:var(--pink-300)}
+.hero h1{font-family:var(--font-display);text-transform:uppercase;font-size:clamp(2.9rem,6vw,5.4rem);line-height:.86;letter-spacing:-.015em;margin:.22em 0 .3em;font-weight:400;color:var(--cream-50)}
+.hero h1 .flip{color:var(--pink-300)}
+.hero-sub{font-size:1.2rem;color:var(--green-100);max-width:42ch;margin:0 0 28px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hero-media{position:relative}
+.hero-media img{display:block;width:100%;height:auto;border-radius:var(--radius-lg);border:1px solid var(--green-600);box-shadow:0 18px 50px rgba(0,0,0,.28)}
+
+/* protein disc — the signature stamp */
+.disc{display:grid;place-content:center;text-align:center;width:132px;height:132px;border-radius:50%;background:var(--pink-300);color:var(--green-900);transform:rotate(-11deg);box-shadow:0 10px 26px rgba(0,0,0,.18);border:2px solid var(--pink-500)}
+.disc .num{font-family:var(--font-display);font-size:3.1rem;line-height:.8;letter-spacing:-.02em}
+.disc .cap{font-family:var(--font-mono);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;margin-top:4px}
+.hero .disc{position:absolute;left:-24px;bottom:-18px}
+
+@media(max-width:840px){
+  .hero-grid{grid-template-columns:1fr;gap:32px;padding-bottom:48px}
+  .hero-media{order:2;max-width:440px}
+  .hero h1{font-size:clamp(2.6rem,12vw,4.5rem)}
+  .hero .disc{width:104px;height:104px;left:auto;right:-8px;bottom:-10px}
+  .hero .disc .num{font-size:2.4rem}
+}
+
+/* ---------- sections ---------- */
+section{padding:76px 0}
+.section-head{max-width:42ch}
+.section-head h2{font-family:var(--font-display);text-transform:uppercase;font-size:clamp(2rem,4.6vw,3.5rem);line-height:.94;letter-spacing:-.01em;margin:.35em 0 .3em;font-weight:400}
+.lede{font-size:1.2rem;color:var(--stone-600)}
+
+.band-green{background:var(--green-800);color:var(--cream-100)}
+.band-green .eyebrow{color:var(--pink-300)}
+.band-green .lede{color:var(--green-100)}
+.band-green h2{color:var(--cream-50)}
+.band-green h2 em{font-style:normal;color:var(--pink-300)}
+
+/* ---------- Thesis (light) ---------- */
+.thesis{background:var(--cream-50)}
+.thesis h2 em{font-style:normal;background:var(--pink-200);box-shadow:0 0 0 4px var(--pink-200);border-radius:3px}
+.thesis .lede em{font-style:italic;color:var(--green-700)}
+
+/* Non-negotiables (balanced numbered rows) */
+.rules{margin-top:40px;border-top:1px solid var(--cream-300)}
+.rule{display:flex;gap:28px;align-items:center;padding:22px 4px;border-bottom:1px solid var(--cream-300)}
+.rule .n{font-family:var(--font-display);font-size:2.4rem;line-height:.8;color:var(--pink-500);min-width:58px;text-align:center;flex:none}
+.rule h3{font-size:clamp(1.15rem,2.4vw,1.65rem);font-weight:700;margin:0;line-height:1.15;color:var(--green-900)}
+@media(max-width:560px){.rule{gap:18px;padding:18px 2px}.rule .n{font-size:1.9rem;min-width:42px}}
+
+/* ---------- Founder note ---------- */
+.founder{background:var(--pink-100);border-top:1px solid var(--pink-200);border-bottom:1px solid var(--pink-200)}
+.founder-grid{display:grid;grid-template-columns:.85fr 1.4fr;gap:56px;align-items:start}
+.founder-card{background:var(--cream-50);border:1px solid var(--cream-300);border-radius:var(--radius-lg);padding:8px;box-shadow:var(--shadow-card);position:relative}
+.founder-card img{border-radius:16px;aspect-ratio:4/5;object-fit:cover;width:100%}
+.founder-card .disc{position:absolute;bottom:18px;right:-18px;width:104px;height:104px}
+.founder-card .disc .num{font-size:2.4rem}
+.founder-note .big{font-family:var(--font-body);font-weight:800;color:var(--green-800);font-size:clamp(1.5rem,2.7vw,2.1rem);line-height:1.22;letter-spacing:-.015em;margin:16px 0 24px}
+.founder-note .big .line2{color:var(--green-600);display:block;margin-top:.35em;font-weight:600}
+.founder-note p{font-size:1.15rem;line-height:1.65;margin:0 0 1.1em;color:var(--green-900)}
+.founder-note em{font-style:normal;font-weight:700}
+.sign{display:flex;align-items:center;gap:14px;margin-top:26px}
+.sign .av{width:52px;height:52px;border-radius:50%;background:var(--green-800);color:var(--cream-50);font-family:var(--font-display);display:grid;place-content:center;font-size:1.3rem}
+.sign .who{font-weight:700}
+.sign .role{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;color:var(--stone-600);text-transform:uppercase}
+@media(max-width:840px){.founder-grid{grid-template-columns:1fr;gap:40px}.founder-card{max-width:360px}.founder-card .disc{right:0}}
+
+/* ---------- Menu peek ---------- */
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+.meal{background:var(--cream-50);border:1px solid var(--cream-300);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-card);position:relative}
+.meal .ph{position:relative}
+.meal .ph img{aspect-ratio:4/5;object-fit:cover;width:100%}
+.meal .disc{width:86px;height:86px;position:absolute;top:14px;right:14px;transform:rotate(-10deg)}
+.meal .disc .num{font-size:1.95rem}
+.meal .disc .cap{font-size:.45rem}
+.meal .body{padding:18px 20px 22px}
+.meal h3{margin:12px 0 6px;font-size:1.2rem;font-weight:700}
+.meal .macros{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.06em;color:var(--stone-600);text-transform:uppercase}
+.tag{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;border:1px solid var(--cream-300);background:#fff;font-weight:700}
+.marker{width:12px;height:12px;border-radius:2px;display:inline-grid;place-content:center;border:1.5px solid currentColor}
+.marker::after{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.veg{color:var(--leaf)} .nonveg{color:var(--tomato)}
+@media(max-width:840px){.menu-grid{grid-template-columns:1fr;max-width:400px;margin-inline:auto;margin-top:32px}}
+
+/* ---------- How it works ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:44px}
+.step{background:var(--green-700);border:1px solid var(--green-600);border-radius:var(--radius-md);padding:24px}
+.step .si{width:44px;height:44px;border-radius:12px;background:var(--green-800);display:grid;place-content:center;color:var(--pink-300);margin-bottom:16px}
+.step .si .ico{width:22px;height:22px}
+.step .n{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;color:var(--yolk)}
+.step h3{font-size:1.12rem;margin:4px 0 6px;font-weight:700;color:var(--cream-50)}
+.step p{margin:0;color:var(--green-100);font-size:.98rem}
+.steps-note{margin-top:22px;font-family:var(--font-mono);font-size:.78rem;letter-spacing:.05em;color:var(--pink-300)}
+@media(max-width:720px){.steps{grid-template-columns:1fr 1fr}}
+
+/* ---------- Early access CTA ---------- */
+.cta{background:var(--green-800);color:var(--cream-50);border-radius:28px;padding:64px 40px;text-align:center}
+.cta-mark{width:78px;height:78px;border-radius:20px;background:var(--cream-50);color:var(--green-800);display:grid;place-content:center;margin:0 auto 26px;border:1px solid var(--cream-300)}
+.cta-mark .ico{width:40px;height:40px;stroke-width:2}
+.cta h2{font-family:var(--font-display);text-transform:uppercase;font-size:clamp(2.2rem,5vw,3.8rem);line-height:.92;margin:0 0 .3em;font-weight:400}
+.cta h2 .flip{color:var(--pink-300)}
+.cta p{color:var(--green-100);font-size:1.2rem;max-width:46ch;margin:0 auto 32px}
+.cta .fine{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;color:var(--stone-400);margin-top:22px}
+.cta .fine strong{color:var(--cream-100)}
+
+/* ---------- FAQ ---------- */
+.faq{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 40px;margin-top:40px}
+.faq details{border-bottom:1px solid var(--cream-300);padding:6px 0}
+.faq summary{font-weight:700;font-size:1.08rem;cursor:pointer;list-style:none;padding:12px 0;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--font-mono);color:var(--pink-500);font-size:1.3rem;transition:transform .2s}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin:0 0 14px;color:var(--stone-600)}
+@media(max-width:720px){.faq{grid-template-columns:1fr}}
+
+/* ---------- Footer (slim) ---------- */
+footer{background:var(--green-900);color:var(--green-100)}
+.foot-inner{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;padding:24px 0;font-family:var(--font-mono);font-size:.76rem;letter-spacing:.05em}
+.foot-social{display:flex;gap:12px}
+.foot-social a{width:40px;height:40px;border:1px solid var(--green-700);border-radius:999px;display:grid;place-content:center;color:var(--pink-300);transition:border-color .2s,color .2s}
+.foot-social a:hover{border-color:var(--pink-500);color:var(--pink-200)}
+.foot-social .ico{width:20px;height:20px}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.disc{transform:rotate(-10deg)!important}}
+</style>
+</head>
+<body>
+
+<!-- ===== Lucide icon sprite ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-soup" viewBox="0 0 24 24"><path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z"/><path d="M7 21h10"/><path d="M19.5 12 22 6"/><path d="M16.25 3c.27.1.8.53.75 1.36-.06.83-.93 1.2-1 2.02-.05.78.34 1.24.73 1.62"/><path d="M11.25 3c.27.1.8.53.74 1.36-.05.83-.93 1.2-.98 2.02-.06.78.33 1.24.72 1.62"/><path d="M6.25 3c.27.1.8.53.75 1.36-.06.83-.93 1.2-1 2.02-.05.78.34 1.24.74 1.62"/></symbol>
+  <symbol id="i-salad" viewBox="0 0 24 24"><path d="M7 21h10"/><path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z"/><path d="M11.38 12a2.4 2.4 0 0 1-.4-4.77 2.4 2.4 0 0 1 3.2-2.77 2.4 2.4 0 0 1 3.47-.63 2.4 2.4 0 0 1 3.37 3.37 2.4 2.4 0 0 1-1.1 3.7 2.51 2.51 0 0 1 .03 1.1"/><path d="m13 12 4-4"/><path d="M10.9 7.25A3.99 3.99 0 0 0 4 10c0 .73.2 1.41.54 2"/></symbol>
+  <symbol id="i-pot" viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M20 12v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8"/><path d="m4 8 16-4"/><path d="m8.86 6.78-.45-1.81a2 2 0 0 1 1.45-2.43l1.94-.48a2 2 0 0 1 2.43 1.46l.45 1.8"/></symbol>
+  <symbol id="i-bike" viewBox="0 0 24 24"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></symbol>
+  <symbol id="i-platter" viewBox="0 0 24 24"><path d="M12 3V2"/><path d="m15.4 17.4 3.2-2.8a2 2 0 1 1 2.8 2.9l-3.6 3.3c-.7.8-1.7 1.2-2.8 1.2h-4c-1.1 0-2.1-.4-2.8-1.2l-1.302-1.464A1 1 0 0 0 6.151 19H5"/><path d="M2 14h12a2 2 0 0 1 0 4h-2"/><path d="M4 10h16"/><path d="M5 10a7 7 0 0 1 14 0"/><path d="M5 14v6a1 1 0 0 1-1 1H2"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></symbol>
+</svg>
+
+<a id="top"></a>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <a class="hero-brand" href="#top" aria-label="Protein Please">
+        <img class="mark" src="assets/logo-mark-dark.svg" alt="">
+        <img class="word" src="assets/logo-cream.svg" alt="Protein Please">
+      </a>
+      <span class="hero-tag">✳ Launching soon · Thane</span>
+    </div>
+
+    <div class="hero-grid">
+      <div class="hero-body">
+        <span class="eyebrow"><span class="star">✳</span> High-protein meals · veg &amp; non-veg</span>
+        <h1>So good you'll forget <span class="flip">it's healthy</span></h1>
+        <p class="hero-sub">Protein-rich meals crafted so the food is the point — and the nutrition is the bonus. No guilt. No cheat days.</p>
+        <div class="hero-cta">
+          <a class="btn btn-pink btn-lg" data-form-link href="#early-access">Save my spot <svg class="ico"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-ghost-inv btn-lg" href="#menu">See what's cooking</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="assets/hero-side.jpg" alt="Freshly packed Protein Please meal boxes — curry, brown rice, fresh slaw and a sriracha-topped protein" width="840" height="1050">
+        <div class="disc" aria-label="38 grams of protein">
+          <span class="num">38</span><span class="cap">grams protein</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THESIS ============ -->
+<section class="thesis reveal">
+  <div class="wrap section-head" style="max-width:52ch">
+    <span class="eyebrow"><span class="star">✳</span> The whole idea</span>
+    <h2>Healthy food, <em>minus the punishment</em></h2>
+    <p class="lede">Nobody struggles with <em>knowing</em> healthy food matters. The struggle is that it usually tastes like a penalty — bland, predictable, impossible to stick to. So we fixed the part everyone gets wrong: we made it taste like something you'd actually choose.</p>
+  </div>
+  <div class="wrap">
+    <div class="rules">
+      <div class="rule"><div class="n">01</div><h3>High protein in every single meal</h3></div>
+      <div class="rule"><div class="n">02</div><h3>Real, whole ingredients — no mystery powders</h3></div>
+      <div class="rule"><div class="n">03</div><h3>Balanced macros that fit busy schedules</h3></div>
+      <div class="rule"><div class="n">04</div><h3>Actually tastes good — flavour is not optional</h3></div>
+      <div class="rule"><div class="n">05</div><h3>No guilt, no cheat days needed</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NOTE FROM THE CHEF ============ -->
+<section class="founder reveal">
+  <div class="wrap founder-grid">
+    <div class="founder-card">
+      <img src="assets/founder-real.jpg" alt="Freshly packed Protein Please boxes with branded lids, ready to go out">
+      <div class="disc" aria-label="42 grams of protein"><span class="num">42</span><span class="cap">grams protein</span></div>
+    </div>
+    <div class="founder-note">
+      <span class="eyebrow"><span class="star">✳</span> A note from the chef</span>
+      <p class="big">Hi, I'm Shruti.<span class="line2">I started Protein Please because I wanted to eat healthy, protein-first meals.</span></p>
+      <p>Not the sad kind — bland, boring, forgettable. The kind you actually look forward to. I couldn't find it anywhere, so as a chef, I started cooking it for myself: high on protein, full of flavour, zero guilt.</p>
+      <p>Friends started asking for boxes. Then their friends did. Turns out I wasn't the only one craving food that's genuinely good for you <em>and</em> genuinely good.</p>
+      <p>Protein Please is that food — now made for <em>you</em>. If that sounds like your kind of eating, you're exactly my kind of person. A fellow Protein Paglu. And I'd love to cook for you.</p>
+      <div class="sign">
+        <div class="av">SD</div>
+        <div>
+          <div class="who">Shruti Desai</div>
+          <div class="role">Founder · Chef &amp; fellow Protein Paglu</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MENU PEEK ============ -->
+<section id="menu" class="reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow"><span class="star">✳</span> A peek at the kitchen</span>
+      <h2>Bowls you'll actually crave</h2>
+      <p class="lede">A rotating menu, veg and non-veg. Macros printed on every label. Here's a taste of the first drop.</p>
+    </div>
+    <div class="menu-grid">
+      <article class="meal">
+        <div class="ph"><img src="assets/meal-bowl.jpg" alt="Paneer Power Bowl"><div class="disc"><span class="num">38</span><span class="cap">g protein</span></div></div>
+        <div class="body"><span class="tag veg"><span class="marker"></span> Veg</span><h3>Paneer Power Bowl</h3><div class="macros">38g protein · 480 kcal</div></div>
+      </article>
+      <article class="meal">
+        <div class="ph"><img src="assets/meal-counter.jpg" alt="Sweet Heat Sriracha Bowl"><div class="disc"><span class="num">42</span><span class="cap">g protein</span></div></div>
+        <div class="body"><span class="tag nonveg"><span class="marker"></span> Non-veg</span><h3>Sweet Heat Sriracha Bowl</h3><div class="macros">42g protein · 520 kcal</div></div>
+      </article>
+      <article class="meal">
+        <div class="ph"><img src="assets/meal-hero.jpg" alt="Chipotle Glow Bowl"><div class="disc"><span class="num">36</span><span class="cap">g protein</span></div></div>
+        <div class="body"><span class="tag veg"><span class="marker"></span> Veg</span><h3>Chipotle Glow Bowl</h3><div class="macros">36g protein · 460 kcal</div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="band-green reveal">
+  <div class="wrap">
+    <div class="section-head" style="max-width:44ch">
+      <span class="eyebrow"><span class="star">✳</span> How it'll work</span>
+      <h2>Dinner sorted, on your terms</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="si"><svg class="ico"><use href="#i-salad"/></svg></div><div class="n">01</div><h3>Pick your plan</h3><p>Weekly or monthly. Veg, non-veg, or a mix — you choose.</p></div>
+      <div class="step"><div class="si"><svg class="ico"><use href="#i-pot"/></svg></div><div class="n">02</div><h3>We cook it fresh</h3><p>Real ingredients, high protein, macros printed on every label.</p></div>
+      <div class="step"><div class="si"><svg class="ico"><use href="#i-bike"/></svg></div><div class="n">03</div><h3>Delivered fresh</h3><p>Brought straight to your door — freshly made, right across Thane.</p></div>
+      <div class="step"><div class="si"><svg class="ico"><use href="#i-platter"/></svg></div><div class="n">04</div><h3>Open &amp; eat</h3><p>Ready to eat, no reheating needed. Real food, zero effort.</p></div>
+    </div>
+    <p class="steps-note">✳ Swap or skip any week — you're always in control.</p>
+  </div>
+</section>
+
+<!-- ============ EARLY ACCESS ============ -->
+<section id="early-access" class="reveal">
+  <div class="wrap">
+    <div class="cta">
+      <div class="cta-mark"><svg class="ico"><use href="#i-soup"/></svg></div>
+      <h2>Come sit at the <span class="flip">first table</span></h2>
+      <p>We're cooking our very first tryout batches right here in Thane, in small numbers. Tell us a little about you and we'll reach out when your box is ready to book.</p>
+      <a class="btn btn-pink btn-lg" data-form-link href="#">Grab early access <svg class="ico"><use href="#i-arrow"/></svg></a>
+      <p class="fine">Takes 60 seconds · <strong>No payment, no commitment</strong> — just early dibs &amp; founder pricing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="reveal" style="padding-top:8px">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow"><span class="star">✳</span> Good questions</span>
+      <h2>Before you ask</h2>
+    </div>
+    <div class="faq">
+      <div>
+        <details><summary>When are you launching?</summary><p>Soon. We're cooking limited tryout batches first to get everything just right. Join the early list and you'll be first to know — and first to book.</p></details>
+        <details><summary>Where do you deliver?</summary><p>We're starting hyper-local in Thane so every box arrives fresh. Sign up and tell us your area — it helps us plan where we grow next.</p></details>
+      </div>
+      <div>
+        <details><summary>Veg or non-veg?</summary><p>Both, always. Every plan lets you go fully veg, fully non-veg, or mix it up — with high protein either way.</p></details>
+        <details><summary>Does signing up cost anything?</summary><p>Nope. The early-access form is just you raising your hand. No payment, no commitment — you get first dibs and founder pricing when we open bookings.</p></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER (slim) ============ -->
+<footer>
+  <div class="wrap foot-inner">
+    <span>© 2026 Protein Please · Made in Thane by Protein Paglus ✳</span>
+    <div class="foot-social">
+      <a href="https://instagram.com/_proteinplease" target="_blank" rel="noopener" aria-label="Instagram @_proteinplease"><svg class="ico"><use href="#i-instagram"/></svg></a>
+      <a href="mailto:proteinpplease@gmail.com" aria-label="Email proteinpplease@gmail.com"><svg class="ico"><use href="#i-mail"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   >>> PASTE YOUR GOOGLE FORM LINK BELOW <<<
+   Replace the "#" with your Google Form URL, e.g.
+   "https://forms.gle/xxxxxxxx". Every early-access button
+   points to it automatically.
+   ============================================================ */
+const GOOGLE_FORM_URL = "https://forms.gle/ppdi67NRiSnXVDnN9";
+
+(function(){
+  if (GOOGLE_FORM_URL && GOOGLE_FORM_URL !== "#") {
+    document.querySelectorAll('[data-form-link]').forEach(function(a){
+      a.href = GOOGLE_FORM_URL; a.target = "_blank"; a.rel = "noopener";
+    });
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
