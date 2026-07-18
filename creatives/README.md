@@ -19,22 +19,40 @@ visible above and below it — just like the reference.
 | Bleed | **0.125 in** all sides → artboard 13.75 in × 3.85 in |
 
 Panel order across the flat wrap (left → right):
-**TOP/front → tray side → BOTTOM (chef note + QR, rotated 180°) → tray side → glue flap.**
+**TOP/front → tray side → BOTTOM (back: wordmark + menu QR, rotated 180°) → tray side → glue flap.**
 Fold lines are the dashed gold guides; the thin outline is the trim edge.
+
+## Front layout (approved)
+A single, deliberately **simple** front, top → bottom:
+- the **Protein Please** wordmark (small) in forest green,
+- the tagline *“So good you'll forget it's healthy”*,
+- the three plan points (Veg & Non-Veg / Thoughtfully Crafted / Real Ingredients),
+- a pink **"grams of protein"** circle with blank space above — **the chef writes the
+  protein number by hand before shipping**, and
+- the **Keep refrigerated / Microwave for 12 minutes** note.
+
+Sides are solid green with a vertical line each (`HIGH PROTEIN · REAL FOOD · THANE`
+and `SO GOOD YOU'LL FORGET IT'S HEALTHY`); the back carries the wordmark + menu QR.
 
 ## Files
 | File | What |
 |---|---|
-| `sleeve-paneer-power-bowl.svg` | Named-dish sleeve (flagship layout: dish name, description, VEG / HIGH PROTEIN badges, instructions, best-before, macros, brand bar). Master vector. |
-| `sleeve-generic.svg` | Generic sleeve — no dish name. Big Protein Please branding, a warm note from the chef, and the QR. Use on any box. |
-| `sleeve-*.png` | ~288 DPI raster previews (rendered from the SVGs). |
-| `qr-proteinplease.svg` / `.png` | Standalone QR → **https://www.proteinplease.in** (error-correction H). |
-| `_build_sleeves.py`, `_qr-path.txt` | Generator + QR data. Re-run `python3 _build_sleeves.py` to rebuild the SVGs. |
+| `sleeve.svg` | The sleeve — master vector. Simple approved front (see above); solid-green sides; cream back with the menu QR. |
+| `sleeve.png` | 300 DPI raster preview (4125 × 1155 px), rendered from the SVG. |
+| `qr-proteinplease.svg` / `.png` | Standalone QR → **https://proteinplease.in/** (error-correction H). |
+| `_build_sleeves.py`, `_qr-path.txt` | Generator + QR data. Re-run `python3 _build_sleeves.py` to rebuild the SVG, then render the PNG (below). |
+| `archive/` | Previous, un-approved sleeve designs (generic + paneer-power-bowl) and their old generator, kept for reference. |
+
+Render the PNG after building:
+```
+python3 _build_sleeves.py
+cairosvg sleeve.svg -o sleeve.png --output-width 4125   # 300 DPI
+```
 
 ## QR
-Encodes `https://www.proteinplease.in`, high error-correction (~30%), verified to
-decode with OpenCV on every artboard. It appears on the underside of the named
-sleeve and prominently on the generic sleeve. Keep it ≥ 0.8 in on the final print.
+Encodes `https://proteinplease.in/`, high error-correction (~30%), verified to
+decode with OpenCV. It appears on the back panel as **SCAN FOR THE MENU**. Keep it
+≥ 0.8 in on the final print.
 
 ## Fonts
 The brand display face (**Impact PP**, from `../assets/impact.woff2`) is embedded
