@@ -141,7 +141,7 @@ def hero_front():
     g.append(f'<text x="{cx}" y="326" font-family="{BODY}" font-weight="700" font-size="13.5" '
              f'letter-spacing="0.3" fill="{C["green800"]}" text-anchor="middle">Keep refrigerated</text>')
     g.append(f'<text x="{cx}" y="347" font-family="{BODY}" font-weight="500" font-size="13" '
-             f'fill="{C["stone600"]}" text-anchor="middle">Microwave for 12 minutes before consumption</text>')
+             f'fill="{C["stone600"]}" text-anchor="middle">Microwave for 1-2 minutes before consumption</text>')
     return "".join(g)
 
 # =========================================================================
